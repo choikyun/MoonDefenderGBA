@@ -168,7 +168,7 @@
  * XY座標
  */
 #define AMB_X (112)
-#define AMB_Y (144)
+#define AMB_Y (142)
 
 
 /*
@@ -239,6 +239,16 @@
 #define CITY_W (16)
 #define CITY_H (10)
 
+/*
+ * 当たり判定
+ */
+#define HIT_CITY_W (CITY_W - 1)
+#define HIT_CITY_H (CITY_H - 1)
+
+/*
+ * ペナルティスコア
+ */
+#define CITY_PENALTY (100)
 
 
 

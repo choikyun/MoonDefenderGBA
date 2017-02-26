@@ -34,6 +34,8 @@ pause ();
 static void
 add_score (u32);
 static void
+sub_score (u32);
+static void
 update_lv ();
 static void
 update_score ();
@@ -202,10 +204,6 @@ game ()
       update_lv ();
       update_remining_missiles ();
       disp_amb ();
-      //disp_marker ();
-      //disp_bomb ();
-      //disp_cities ();
-      //disp_aim ();
       disp_pause ();
       pause ();
       break;
@@ -528,8 +526,7 @@ disp_cities ()
 {
   for (int i = 0; i < MAX_CITIES; i++)
   {
-    if (is_hit_to_bombs (cities[i].sprite.coord.x, cities[i].sprite.coord.y, CITY_W - 1, CITY_H - 1, 0)
-        && cities[i].damage < CITY_MAX_DAMAGE)
+    if (is_hit_to_bombs (cities[i].sprite.coord.x, cities[i].sprite.coord.y, HIT_CITY_W, HIT_CITY_H, 0))
     {
       PlaySound(SOUND_CRASH_CITY);
 
@@ -543,6 +540,8 @@ disp_cities ()
       }
       if (cities[i].damage == CITY_MAX_DAMAGE)
       {
+        cities[i].damage++;
+
         // 破壊された
         stage.cities--;
         if (!stage.cities)
@@ -552,6 +551,12 @@ disp_cities ()
           game_state.next_scene = GAME_OVER;
         }
       }
+      else if (cities[i].damage > CITY_MAX_DAMAGE)
+      {
+        // 跡地爆破のペナルティ
+        sub_score (CITY_PENALTY * (MAX_CITIES - stage.cities));
+      }
+
       // 振動発生
       if (!cities[i].shock.duration)
       {
@@ -1476,6 +1481,12 @@ init_game ()
   for(int i = 0; i < 32; i++)
   stage.flash.color[i] = FLASH_COLOR;
 
+  // モード
+  stage.mode = SRAMRead32(SRAM_MODE);
+  if ((u32)stage.mode > 1 )
+  {
+    stage.mode = 0;// 数値がおかしかったらリセット
+  }
 
   // パラメータ初期化
   score = 0;
@@ -1814,6 +1825,21 @@ static void
 add_score (u32 num)
 {
   score += num;
+  update_score ();
+}
+
+
+
+/**
+ * @brief スコア加算
+ * @param num 加点
+ */
+static void
+sub_score (u32 num)
+{
+  score -= num;
+  if (score < 0)
+    score = 0;
   update_score ();
 }
 
