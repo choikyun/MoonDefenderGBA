@@ -19,7 +19,7 @@ AMBiAnti-Missile-BatteryjA‚à‚µ‚­‚Í“sŽs‚ª‚·‚×‚Ä”j‰ó‚³‚ê‚é‚ÆƒQ[ƒ€ƒI[ƒo[‚Å‚·
 * **SELECT**@ƒ‚[ƒh‘I‘ð
 * **START**@ƒQ[ƒ€ŠJŽn
 
-** ƒQ[ƒ€‰æ–Ê **
+**ƒQ[ƒ€‰æ–Ê**
 
 * **A**@ƒ~ƒTƒCƒ‹”­ŽË
 * **UP DOWN LEFT RIGHT**@Æ€ˆÚ“®
@@ -29,7 +29,7 @@ AMBiAnti-Missile-BatteryjA‚à‚µ‚­‚Í“sŽs‚ª‚·‚×‚Ä”j‰ó‚³‚ê‚é‚ÆƒQ[ƒ€ƒI[ƒo[‚Å‚·
 
 **ƒAƒCƒeƒ€**
 
-* ** •â‹‹**@Žc‚è’e”‚ð‰ñ•œ
+* **•â‹‹**@Žc‚è’e”‚ð‰ñ•œ
 * **”½‰ž’e**@—U”š‚µ‚Ä•¡”‚Ìƒ~ƒTƒCƒ‹‚ðŒ‚”jB‚½‚¾‚µƒXƒRƒA‚É‚È‚ç‚È‚¢
 
 **“G**
