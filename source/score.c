@@ -1,11 +1,18 @@
-﻿/***************************************************
- Moon Defender GBA
- ver 1.00
- 2017.02.01
- Choe Gyun (choi kyun)
- ***************************************************/
+﻿/**
+ * @file score.c
+ * @brief スコア
+ * @date  2017/02/01 更新
+ * @author Choe Gyun(choikyun)
+ */
 
-//#define GLOBAL_VALUE_DEFINE
+/***************************************************
+ * Moon Defender GBA
+ * ver 1.0.0
+ * 2017.02.01
+ * Choe Gyun (choikyun)
+ *****************************************************/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <gba.h>

@@ -1,9 +1,17 @@
-﻿/***************************************************
- Moon Defender GBA
- ver 1.00
- 2017.02.01
- Choe Gyun (choi kyun)
- ***************************************************/
+﻿/**
+ * @file music.c
+ * @brief BGM, SE
+ * @date  2017/02/01 更新
+ * @author Choe Gyun(choikyun)
+ */
+
+/***************************************************
+ * Moon Defender GBA
+ * ver 1.0.0
+ * 2017.02.01
+ * Choe Gyun (choikyun)
+ *****************************************************/
+
 
 #include <gba.h>
 #include "music.h"

@@ -1,9 +1,17 @@
-﻿/***************************************************
- Moon Defender GBA
- ver 1.00
- 2017.02.01
- Choe Gyun (choi kyun)
- ***************************************************/
+﻿/**
+ * @file game.h
+ * @brief ゲーム本体のヘッダ
+ * @date  2017/02/01 更新
+ * @author Choe Gyun(choikyun)
+ */
+
+/***************************************************
+ * Moon Defender GBA
+ * ver 1.0.0
+ * 2017.02.01
+ * Choe Gyun (choikyun)
+ *****************************************************/
+
 
 #ifndef _game_h_
 #define _game_h_
@@ -25,54 +33,71 @@
  * 汎用的な定義
  ***************************************************/
 
-/*
+/**
  * 固定小数点
  */
 #define FIX (16)
 
 
 
-/*
- * ステージ
+/**
+ * ステージ幅　最小
  */
 #define STAGE_W_MIN (0)
+/**
+ * ステージ幅　最大
+ */
 #define STAGE_W_MAX (SCREEN_WIDTH-8)
+/**
+ * ステージ高さ　最小
+ */
 #define STAGE_H_MIN (8)
+/**
+ * ステージ高さ　最大
+ */
 #define STAGE_H_MAX (SCREEN_HEIGHT - 32 - 8)
 
 
 
-/*
- * 数値表示
+/**
+ * 数字　幅
  */
 #define NUM_W (8)
+/**
+ * 数字　高さ
+ */
 #define NUM_H (8)
 
 
 
-/*
- * 数値の実際の幅
+/**
+ * 数字の実際の幅
+ *
+ * MODE4では16bit単位で書き込むため
  */
 #define REAL_NUM_W (NUM_W / 2)
 
 
 
-/*
- * キー
+/**
+ * キー入力　長さ
  */
 #define DEF_KEY_DELAY (1)
+/**
+ * キー入力 リピート
+ */
 #define DEF_KEY_REPEAT (1)
 
 
 
-/*
+/**
  * メッセージ表示ウェイト
  */
 #define MES_WAIT (20)
 
 
 
-/*
+/**
  * メッセージ点滅カウント
  */
 #define MES_COUNT (10)
@@ -87,8 +112,8 @@
  * モード
  ***************************************************/
 
-/*
- * モード数
+/**
+ * ゲームモード数
  */
 #define MAX_MODE (2)
 
@@ -99,61 +124,76 @@
  * 照準 スプライト
  ***************************************************/
 
-/*
- * XY座標
+/**
+ * AIM X座標
  */
 #define AIM_X (240 / 2 - 8 / 2)
+/**
+ * AIM　Y座標
+ */
 #define AIM_Y ((160-8) / 2 - 8 / 2)
 
 
-/*
- * 幅
+/**
+ * AIM　幅
  */
 #define AIM_W (8)
+/**
+ * AIM　高さ
+ */
 #define AIM_H (8)
 
 
-/*
- * 速度
+/**
+ * AIM速度
  */
 #define AIM_SPEED (1)
 
 
-/*
- * 座標補正
+/**
+ * AIM座標補正　X座標
  */
 #define AIM_ADJUST_X (3)
+/**
+ * AIM座標補正　Y座標
+ */
 #define AIM_ADJUST_Y (3)
 
 
-/*
- * 加速度
+/**
+ * AIM加速度
  */
 #define AIM_ACC (4096*2)
+/**
+ * AIM加速度　最大値
+ */
 #define AIM_ACC_MAX (2 << FIX)
 
 
-/*
- * 摩擦係数
+/**
+ * AIM摩擦係数
  */
 #define AIM_FRIC (0.08)
 
 
-/*
- * アニメーション
+/**
+ * AIMアニメーション　インターバル
  */
 #define AIM_ANIME_INTERVAL (3)
+/**
+ * AIMアニメーション　フレーム数
+ */
 #define AIM_ANIME_MAX_FRAME (3)
 
 
-/*
+/**
  * AIM警告点滅間隔
  */
 #define AIM_CAUTION_INTERVAL (4)
 
 
-/*
- * 発射までのインターバル
+/**
+ * AIM発射までのインターバル
  */
 #define AIM_FIRE_INTERVAL (1)
 
@@ -164,24 +204,20 @@
  * Anti-Missile-Battery スプライト
  ***************************************************/
 
-/*
- * XY座標
+/**
+ * AMB　X座標
  */
 #define AMB_X (112)
+/**
+ * AMB　Y座標
+ */
 #define AMB_Y (142)
 
 
-/*
- * センター
+/**
+ * AMB　センター
  */
 #define AMB_C (AMB_X + 8)
-
-
-/*
- * アニメーション
- */
-//#define AMB_ANIME_INTERVAL (8)
-//#define AMB_MAX_FRAME (3)
 
 
 
@@ -190,21 +226,24 @@
  * レベル
  ***************************************************/
 
-/*
- * 表示桁
+/**
+ * レベル表示桁
  */
 #define LV_DIGIT (2)
 
 
-/*
- * XY座標
+/**
+ * レベル　X座標
  */
 #define LV_X (36)
+/**
+ * レベル　Y座標
+ */
 #define LV_Y (0)
 
 
-/*
- * 最大レベル
+/**
+ * レベル最大値
  */
 #define MAX_LEVEL (10)
 
@@ -214,39 +253,44 @@
  * 都市
  ***************************************************/
 
-/*
+/**
  * 都市数
  */
 #define MAX_CITIES (6)
 
 
-/*
+/**
  * 都市ダメージ
  */
 #define CITY_MAX_DAMAGE (3)
 
 
-/*
- * XY座標
+/**
+ * 都市　Y座標
  */
 #define CITY_Y (SCREEN_HEIGHT - CITY_H - 4)
-//#define CITY_X (0)
 
 
-/*
- * 幅
+/**
+ * 都市　幅
  */
 #define CITY_W (16)
+/**
+ * 都市　高さ
+ */
 #define CITY_H (10)
 
-/*
- * 当たり判定
+/**
+ * 都市当たり判定　幅
  */
 #define HIT_CITY_W (CITY_W - 1)
+/**
+ * 都市当たり判定　高さ
+ */
 #define HIT_CITY_H (CITY_H - 1)
 
-/*
- * ペナルティスコア
+/**
+ * 都市ペナルティスコア
  */
 #define CITY_PENALTY (100)
 
@@ -256,20 +300,20 @@
  * 都市振動
  ***************************************************/
 
-/*
- * 振幅
+/**
+ * ショック　振幅
  */
 #define SHOCK_RANGE (1)
 
 
-/*
- * 間隔
+/**
+ * ショック　間隔
  */
 #define SHOCK_INTERVAL (4)
 
 
-/*
- * 長さ
+/**
+ * ショック　長さ
  */
 #define SHOCK_DURATION (SHOCK_INTERVAL * 4)
 
@@ -279,13 +323,13 @@
  * フラッシュ
  ***************************************************/
 
-/*
- * 間隔
+/**
+ * フラッシュ　間隔
  */
 #define FLASH_INTERVAL (4)
 
-/*
- * 閃光の色
+/**
+ * フラッシュ　色
  */
 #define FLASH_COLOR (15)
 
@@ -294,52 +338,52 @@
  * ミサイル
  ***************************************************/
 
-/*
- * 画面に表示される最大数
+/**
+ * ミサイル　画面に表示される最大数
  */
 #define MAX_ENEMY_MISSILES (12)
 
 
-/*
- * 発射位置Y座標
+/**
+ * ミサイル　発射位置Y座標
  */
 #define MISSILE_START_Y (8)
 
 
-/*
- * 目標位置Y座標
+/**
+ * ミサイル　目標位置Y座標
  */
 #define MISSILE_END_Y (SCREEN_HEIGHT - 8)
 
 
-/*
- * 発射のインターバル
+/**
+ * ミサイル　発射のインターバル
  */
 #define INIT_ENEMY_FIRE_INTERVAL (2*60);
 
 
-/*
- * AMBミサイル最大数
+/**
+ * AMBミサイル　最大数
  */
 #define MAX_AMB_MISSILES (3)
 
 
-/*
- * AMBミサイル初期値
+/**
+ * AMBミサイル　初期弾数
  */
 #define INIT_AMB_MISSILES (30)
 
 
-/*
- * AMBの速度
+/**
+ * AMBミサイル　速度
  */
 #define AMB_MISSILE_SPEED (1)
 
 
-/*
- * AMB弾数警告
+/**
+ * AMBミサイル　弾数警告になる残り数
  */
-#define AMB_MISSILE_CAUTION (5)
+#define AMB_MISSILE_CAUTION (8)
 
 
 
@@ -348,14 +392,14 @@
  * UFO
  ***************************************************/
 
-/*
- * 出現インターバル
+/**
+ * UFO　出現インターバル
  */
 #define UFO_APPEAR_INTERVAL (1*60)
 
 
-/*
- * UFOミサイル速度
+/**
+ * UFO　ミサイル速度
  */
 #define UFO_MISSILE_SPEED (2)
 
@@ -365,38 +409,53 @@
  * ミサイル弾頭
  ***************************************************/
 
-/*
- * XY補正
+/**
+ * 弾頭　X座標補正
  */
 #define WARHEAD_ADJUST_X (-3)
+/**
+ * 弾頭　Y座標補正
+ */
 #define WARHEAD_ADJUST_Y (-3)
 
 
-/*
- * アニメーション
+/**
+ * 弾頭アニメーション　インターバル
  */
 #define WARHEAD_ANIME_INTERVAL (4)
+/**
+ * 弾頭アニメーション　フレーム数
+ */
 #define WARHEAD_ANIME_MAX_FRAME (1)
 
 
-/*
- * 当たり判定
+/**
+ * 弾頭当たり判定　幅
  */
 #define WARHEAD_HIT_WIDTH (8-1)
+/**
+ * 弾頭当たり判定　高さ
+ */
 #define WARHEAD_HIT_HEIGHT (8-1)
 
 
-/*
- * 多弾頭の確率
+/**
+ * 弾頭　多弾頭の確率
  */
 #define MULTIPLE_PROB (4)
+/**
+ * 弾頭　分裂数
+ */
 #define MAX_MULTIPLE (3)
 
 
-/*
- * 分裂位置
+/**
+ * 弾頭　分裂位置　最小
  */
 #define MULTIPLE_START (20)
+/**
+ * 弾頭　分裂位置　最大
+ */
 #define MULTIPLE_START_MARGIN (20)
 
 
@@ -405,6 +464,9 @@
  * マーカー
  ***************************************************/
 
+/**
+ * マーカー数
+ */
 #define MAX_MARKERS MAX_AMB_MISSILES
 
 
@@ -413,30 +475,39 @@
  * 爆風
  ***************************************************/
 
-/*
- * 当たり判定
+/**
+ * 爆風　当たり判定　幅
  */
 #define BOMB_HIT_WIDTH (16-1)
+/**
+ * 爆風　当たり判定　高さ
+ */
 #define BOMB_HIT_HEIGHT (16-1)
 
 
-/*
- * 爆風最大数
+/**
+ * 爆風　最大数
  */
 #define MAX_BOMBS (32)
 
 
-/*
- * 座標補正
+/**
+ * 爆風　座標補正　X座標
  */
 #define BOMB_ADJUST_X (-5)
+/**
+ * 爆風　座標補正　Y座標
+ */
 #define BOMB_ADJUST_Y (-5)
 
 
-/*
- * アニメーション
+/**
+ * 爆風　アニメーション　インターバル
  */
 #define BOMB_ANIME_INTERVAL (5)
+/**
+ * 爆風　アニメーション　フレーム数
+ */
 #define BOMB_ANIME_MAX_FRAME (3)
 
 
@@ -445,19 +516,29 @@
  * 残り弾数 敵,自機
  ***************************************************/
 
-/*
- * 表示桁
+/**
+ * 残り弾数　表示桁
  */
 #define REMINING_DIGIT (3)
 
 
-/*
- * XY座標
+/**
+ * 敵残り弾数　X座標
  */
 #define REMINING_ENEMY_X (184)
+/**
+ * 敵残り弾数　Y座標
+ */
 #define REMINING_ENEMY_Y SCORE_Y
+/**
+ * AMB残り弾数　X座標
+ */
 #define REMINING_AMB_X (216)
+/**
+ * AMB残り弾数　Y座標
+ */
 #define REMINING_AMB_Y SCORE_Y
+
 
 
 
@@ -465,100 +546,121 @@
  * アイテム：補給
  ***************************************************/
 
-/*
- * これ以下なら補給開始
+/**
+ * アイテム　これ以下なら補給開始
  */
 #define SUPPLY_DROP_LIMIT (10)
 
 
-/*
- * 補給弾数
+/**
+ * アイテム　補給弾数
  */
 #define SUPPLY_CHARGE_MISSILE (8);
 
 
-/*
- * 幅
+/**
+ * アイテム　幅
  */
 #define SUPPLY_WIDTH (12)
+/**
+ * アイテム　高さ
+ */
 #define SUPPLY_HEIGHT (10)
 
 
-/*
- * 当たり判定
+/**
+ * アイテム　当たり判定　幅
  */
 #define SUPPLY_HIT_WIDTH (SUPPLY_WIDTH-1)
+/**
+ * アイテム　当たり判定　高さ
+ */
 #define SUPPLY_HIT_HEIGHT (SUPPLY_HEIGHT-1)
+
+
 
 
 /***************************************************
  * アイテム：広範囲爆弾
  ***************************************************/
 
-/*
- * 敵ミサイルがこれ以上なら投下開始
+/**
+ * 反応弾　敵ミサイルがこれ以上なら投下開始
  */
 #define SUPERBOMB_ENEMY_UPPERLIMIT (10)
 
 
-/*
- * スピード
+/**
+ * 反応弾　スピード
  */
 #define SUPERBOMB_SPEED (3)
 
 
-/*
- * 出現間隔
+/**
+ * 反応弾　出現間隔
  */
 #define SUPERBOMB_DROP_INTERVAL (800)
 
 
-/*
- * 爆破するミサイル数
+/**
+ * 反応弾　誘爆するミサイル数
  */
 #define SUPERBOMB_POWER (5)
 
 
-/*
- * 幅
+/**
+ * 反応弾　幅
  */
 #define SUPERBOMB_WIDTH (8)
+/**
+ * 反応弾　高さ
+ */
 #define SUPERBOMB_HEIGHT (8)
 
 
-/*
- * 当たり判定
+/**
+ * 反応弾　当たり判定　幅
  */
 #define SUPERBOMB_HIT_WIDTH (SUPERBOMB_WIDTH-1)
+/**
+ * 反応弾　当たり判定　高さ
+ */
 #define SUPERBOMB_HIT_HEIGHT (SUPERBOMB_HEIGHT-1)
+
+
+
 
 /***************************************************
  * アイテム一般
  ***************************************************/
 
-/*
- * スピード
+/**
+ * アイテム　スピード
  */
 #define ITEM_SPEED (5)
 
 
-/*
- * アニメーション
+/**
+ * アイテム　アニメーション　インターバル
  */
 #define ITEM_ANIME_INTERVAL (4)
+/**
+ * アイテム　アニメーション　フレーム数
+ */
 #define ITEM_ANIME_MAX_FRAME (1)
 
 
-/*
- * 移動距離
+/**
+ * アイテム　移動距離
  */
 #define ITEM_LIMIT_Y (130)
 
 
-/*
- * 出現間隔
+/**
+ * アイテム　出現間隔
  */
 #define ITEM_DROP_INTERVAL (300)
+
 
 
 
@@ -566,22 +668,41 @@
  *　情報表示
  ***************************************************/
 
-/*
- * メッセージ表示
+/**
+ * メッセージ表示　X座標
  */
 #define MES_X (50)
+/**
+ * メッセージ表示　Y座標
+ */
 #define MES_Y (68)
+/**
+ * メッセージ表示　幅
+ */
 #define MES_W (140)
+/**
+ * メッセージ表示　高さ
+ */
 #define MES_H (24)
 
 
-/*
- * レベルアップ点滅
+/**
+ * レベルアップ表示　X座標
  */
 #define LV_MES_X (0)
+/**
+ * レベルアップ表示　Y座標
+ */
 #define LV_MES_Y (0)
+/**
+ * レベルアップ表示　幅
+ */
 #define LV_MES_W (34)
+/**
+ * レベルアップ表示　高さ
+ */
 #define LV_MES_H (8)
+
 
 
 
@@ -589,7 +710,7 @@
  *　シーン
  ***************************************************/
 
-/*
+/**
  * シーン終了後のインターバル
  */
 #define INTERMISSION (3*60)
@@ -600,12 +721,18 @@
  *　モード選択
  ***************************************************/
 
-/*
- * シーン終了後のインターバル
+/**
+ * モード選択の矢印　X座標
  */
 #define MODE_ARROW_X (28)
+/**
+ * モード選択の矢印　Y座標
+ */
 #define MODE_ARROW_Y (84)
 
+/**
+ * モード選択の矢印　移動後のX座標
+ */
 #define MODE_ARROW_X2 (38)
 
 
@@ -614,24 +741,33 @@
  *　スコア
  ***************************************************/
 
-/*
+/**
  * スコア加算のための高度間隔
  */
 #define SCORE_HEIGHT_RANGE (32)
 
 
-/*
+/**
  * スコア表示桁
  */
 #define SCORE_DIGIT (8)
 
 
-/*
- * スコア座標
+/**
+ * スコア　X座標
  */
 #define SCORE_X (88)
+/**
+ * スコア　Y座標
+ */
 #define SCORE_Y LV_Y
+/**
+ * ハイスコア　X座標
+ */
 #define HISCORE_X (70)
+/**
+ * ハイスコア　Y座標
+ */
 #define HISCORE_Y (65)
 
 
@@ -641,7 +777,7 @@
  *　BGM
  ***************************************************/
 
-/*
+/**
  * ステージBGM数
  */
 #define MAX_STAGE_BGM (3)
@@ -651,7 +787,10 @@
 
 ///////////////////////////////////////////////////////////////////// クラス
 
-// 座標
+
+/**
+ * 座標
+ */
 typedef struct
 { 
   int x;
@@ -660,7 +799,9 @@ typedef struct
 
 
 
-// 矩形座標
+/**
+ * 矩形座標
+ */
 typedef struct
 { 
   int x;
@@ -670,7 +811,9 @@ typedef struct
 }ALIGN(4) RectangleType;
 
 
-// 振動
+/**
+ * 振動
+ */
 typedef struct
 {
   int range;
@@ -681,7 +824,9 @@ typedef struct
 
 
 
-// フラッシュ
+/**
+ * フラッシュ
+ */
 typedef struct
 {
   u8 color[32];
@@ -690,7 +835,9 @@ typedef struct
 
 
 
-// ゲーム管理
+/**
+ * ゲーム管理
+ */
 typedef struct
 { 
   int scene;
@@ -703,7 +850,9 @@ typedef struct
 
 
 
-// ステージ管理
+/**
+ * ステージ管理
+ */
 typedef struct
 { 
   int lv;
@@ -717,7 +866,9 @@ typedef struct
 
 
 
-// キャラクタ
+/**
+ * キャラクタ
+ */
 typedef struct
 { 
   int chr; // スプライト番号
@@ -728,7 +879,9 @@ typedef struct
 
 
 
-// フレームアニメ
+/**
+ * フレームアニメ
+ */
 typedef struct
 { 
   bool is_start; // 開始
@@ -740,7 +893,9 @@ typedef struct
 
 
 
-// AIM
+/**
+ * AIM
+ */
 typedef struct
 { 
   PointType acc; // 加速度
@@ -751,7 +906,9 @@ typedef struct
 
 
 
-// AMB
+/**
+ * AMB
+ */
 typedef struct
 { 
   AnimeType anime;
@@ -760,7 +917,9 @@ typedef struct
 
 
 
-// CITY
+/**
+ * CITY
+ */
 typedef struct
 { 
   int damage; // ダメージ
@@ -771,7 +930,9 @@ typedef struct
 
 
 
-// ミサイル
+/**
+ * ミサイル
+ */
 typedef struct
 { 
   PointType start; // 開始座標
@@ -795,7 +956,9 @@ typedef struct
 
 
 
-// 爆風
+/**
+ * 爆風
+ */
 typedef struct
 { 
   AnimeType anime;
@@ -804,7 +967,9 @@ typedef struct
 
 
 
-// マーカー
+/**
+ * マーカー
+ */
 typedef struct
 { 
   AnimeType anime;
@@ -813,7 +978,9 @@ typedef struct
 
 
 
-// 補給アイテム
+/**
+ * 補給アイテム
+ */
 typedef struct
 { 
   int type; // アイテムの種類
@@ -828,7 +995,9 @@ typedef struct
 
 
 
-// 敵管理
+/**
+ * 敵管理
+ */
 typedef struct
 { 
   int interval; // 発生間隔
@@ -847,7 +1016,9 @@ typedef struct
 
 
 
-// AMB管理
+/**
+ * AMB管理
+ */
 typedef struct
 { 
   int max_missiles; // レベルごとの最大数
@@ -863,7 +1034,9 @@ typedef struct
 
 
 
-// 爆風管理
+/**
+ * 爆風管理
+ */
 typedef struct
 { 
   int index; // 現在のバッファ位置
@@ -872,7 +1045,9 @@ typedef struct
 
 
 
-// UFO
+/**
+ * UFO
+ */
 typedef struct
 { 
   bool is_appeared; // 出現中か
@@ -886,7 +1061,9 @@ typedef struct
 
 
 
-// 点滅メッセージ
+/**
+ * 点滅メッセージ
+ */
 typedef struct
 { 
   bool is_start;
@@ -900,7 +1077,9 @@ typedef struct
 
 
 
-// ウェイト
+/**
+ * ウェイト
+ */
 typedef struct
 { 
   int wait;
@@ -910,7 +1089,9 @@ typedef struct
 
 ///////////////////////////////////////////////////////////////////// ENUM
 
-// CITYダメージ
+/**
+ * CITYダメージ
+ */
 enum
 {
   NOMAL, LITTLE, LARGE, DESTRUCTION
@@ -918,7 +1099,9 @@ enum
 
 
 
-// シーン
+/**
+ * シーン
+ */
 enum
 {
   GAME_MAIN = 0,
@@ -934,7 +1117,9 @@ enum
 
 
 
-// スプライトキャラクタ
+/**
+ * スプライトキャラクタ
+ */
 enum
 {
   SPRITE_AIM = 0,
@@ -1007,27 +1192,33 @@ enum
 
 ///////////////////////////////////////////////////////////////////// SRAM
 
-/*
+/**
  * ハイスコアSRAM保存用
  */
 #define SRAM_CHECK_HISC (0)
+/**
+ * ハイスコアSRAM保存用
+ */
 #define SRAM_HISCORE_NOMAL (4)
+/**
+ * ハイスコアSRAM保存用
+ */
 #define SRAM_HISCORE_HARD (8)
 
 
-/*
+/**
  * 乱数の種
  */
 #define SRAM_SEED (12)
 
 
-/*
+/**
  * ゲームモード保存
  */
 #define SRAM_MODE (16)
 
 
-/*
+/**
  * SRAM書き込みフラグ
  */
 #define SRAM_ON (1)
@@ -1061,46 +1252,84 @@ enum
 
 ///////////////////////////////////////////////////////////////////// グローバル変数
 
-// ゲーム管理
+/**
+ * ゲーム管理
+ */
 GLOBAL GameStateType game_state;
+/**
+ * ステージ管理
+ */
 GLOBAL StageType stage;
 
-// キャラクタ
+/**
+ * AIM
+ */
 GLOBAL AimType aim;
+/**
+ * AMB
+ */
 GLOBAL AmbType amb;
+/**
+ * 都市
+ */
 GLOBAL CityType cities[MAX_CITIES];
 
-// AMB管理
+/**
+ * AMB管理
+ */
 GLOBAL AMBStateType am;
 
-// 爆風管理
+/**
+ * 爆風管理
+ */
 GLOBAL BombStateType bomb;
 
-// 敵管理
+/**
+ * 敵管理
+ */
 GLOBAL EnemyStateType enemy;
 
-// 補給アイテム
+/**
+ * 補給アイテム
+ */
 GLOBAL SupplyType supply;
 
-// 広範囲爆弾
+/**
+ * 広範囲爆弾
+ */
 GLOBAL SupplyType superbomb;
 
-// UFO
+/**
+ * UFO
+ */
 GLOBAL UFOType ufo;
 
-// スコア
+/**
+ * スコア
+ */
 GLOBAL u32 score;
+/**
+ * ハイスコア
+ */
 GLOBAL u32 hiscore;
 
-// メッセージ表示
+/**
+ * メッセージ表示
+ */
 GLOBAL BlinkMessageType mes;
-// メッセージ表示
+/**
+ *　メッセージ表示
+ */
 GLOBAL BlinkMessageType lv_mes;
 
-// 乱数の種
+/**
+ * 乱数の種
+ */
 GLOBAL u32 seed;
 
-// 現在のステージBGM
+/**
+ * 現在のステージBGM
+ */
 GLOBAL int stage_bgm;
 
 
