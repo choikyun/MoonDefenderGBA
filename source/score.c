@@ -86,7 +86,7 @@ load_hiscore ()
 u8
 SRAMRead8 (u32 offset)
 {
-  u8* sram = (u8*) SRAM + offset;
+  volatile u8* sram = (u8*) SRAM + offset;
   return (u8) sram[0];
 }
 
