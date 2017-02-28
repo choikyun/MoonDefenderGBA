@@ -34,7 +34,7 @@
  ***************************************************/
 
 /**
- * 固定小数点
+ * 固定小数点部分 16bit
  */
 #define FIX (16)
 
@@ -136,16 +136,6 @@
  ***************************************************/
 
 /**
- * AIM X座標
- */
-#define AIM_X (SCREEN_WIDTH / 2 - AIM_W / 2)
-/**
- * AIM　Y座標
- */
-#define AIM_Y ((SCREEN_HEIGHT-AIM_H) / 2 - AIM_H / 2)
-
-
-/**
  * AIM　幅
  */
 #define AIM_W (16)
@@ -153,6 +143,16 @@
  * AIM　高さ
  */
 #define AIM_H (16)
+
+
+/**
+ * AIM X座標
+ */
+#define AIM_X (SCREEN_WIDTH / 2 - AIM_W / 2)
+/**
+ * AIM　Y座標
+ */
+#define AIM_Y ((SCREEN_HEIGHT-AIM_H) / 2 - AIM_H / 2)
 
 
 /**
