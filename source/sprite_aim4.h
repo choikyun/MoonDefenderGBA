@@ -16,8 +16,8 @@
 #ifndef GRIT_SPRITE_AIM4_H
 #define GRIT_SPRITE_AIM4_H
 
-#define sprite_aim4TilesLen 64
-extern const unsigned short sprite_aim4Tiles[32];
+#define sprite_aim4TilesLen 256
+extern const unsigned short sprite_aim4Tiles[128];
 
 #endif // GRIT_SPRITE_AIM4_H
 

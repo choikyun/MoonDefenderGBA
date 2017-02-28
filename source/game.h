@@ -47,7 +47,7 @@
 /**
  * ステージ幅　最大
  */
-#define STAGE_W_MAX (SCREEN_WIDTH-8)
+#define STAGE_W_MAX (SCREEN_WIDTH-16)
 /**
  * ステージ高さ　最小
  */
@@ -55,7 +55,7 @@
 /**
  * ステージ高さ　最大
  */
-#define STAGE_H_MAX (SCREEN_HEIGHT - 32 - 8)
+#define STAGE_H_MAX (SCREEN_HEIGHT - 32 - 16)
 
 
 
@@ -103,6 +103,17 @@
 #define MES_COUNT (10)
 
 
+/**
+ * 一般オブジェクト　幅
+ */
+#define OBJ_W (16)
+/**
+ * 一般オブジェクト　高さ
+ */
+#define OBJ_H (16)
+
+
+
 
 /***************************************************
  * ゲーム個別
@@ -127,21 +138,21 @@
 /**
  * AIM X座標
  */
-#define AIM_X (240 / 2 - 8 / 2)
+#define AIM_X (SCREEN_WIDTH / 2 - AIM_W / 2)
 /**
  * AIM　Y座標
  */
-#define AIM_Y ((160-8) / 2 - 8 / 2)
+#define AIM_Y ((SCREEN_HEIGHT-AIM_H) / 2 - AIM_H / 2)
 
 
 /**
  * AIM　幅
  */
-#define AIM_W (8)
+#define AIM_W (16)
 /**
  * AIM　高さ
  */
-#define AIM_H (8)
+#define AIM_H (16)
 
 
 /**
@@ -153,17 +164,17 @@
 /**
  * AIM座標補正　X座標
  */
-#define AIM_ADJUST_X (3)
+#define AIM_ADJUST_X (7)
 /**
  * AIM座標補正　Y座標
  */
-#define AIM_ADJUST_Y (3)
+#define AIM_ADJUST_Y (7)
 
 
 /**
  * AIM加速度
  */
-#define AIM_ACC (4096*2)
+#define AIM_ACC (4096*3)
 /**
  * AIM加速度　最大値
  */
@@ -189,7 +200,7 @@
 /**
  * AIM警告点滅間隔
  */
-#define AIM_CAUTION_INTERVAL (4)
+#define AIM_CAUTION_INTERVAL (10)
 
 
 /**
@@ -246,6 +257,12 @@
  * レベル最大値
  */
 #define MAX_LEVEL (10)
+
+
+/**
+ * レベルのパラメータ数
+ */
+#define LEVEL_PARAM (6)
 
 
 
@@ -353,7 +370,7 @@
 /**
  * ミサイル　目標位置Y座標
  */
-#define MISSILE_END_Y (SCREEN_HEIGHT - 8)
+#define MISSILE_END_Y (SCREEN_HEIGHT - 16)
 
 
 /**
@@ -412,17 +429,17 @@
 /**
  * 弾頭　X座標補正
  */
-#define WARHEAD_ADJUST_X (-3)
+#define WARHEAD_ADJUST_X (-7)
 /**
  * 弾頭　Y座標補正
  */
-#define WARHEAD_ADJUST_Y (-3)
+#define WARHEAD_ADJUST_Y (-7)
 
 
 /**
  * 弾頭アニメーション　インターバル
  */
-#define WARHEAD_ANIME_INTERVAL (4)
+#define WARHEAD_ANIME_INTERVAL (6)
 /**
  * 弾頭アニメーション　フレーム数
  */
@@ -432,11 +449,11 @@
 /**
  * 弾頭当たり判定　幅
  */
-#define WARHEAD_HIT_WIDTH (8-1)
+#define WARHEAD_HIT_WIDTH (OBJ_W-1)
 /**
  * 弾頭当たり判定　高さ
  */
-#define WARHEAD_HIT_HEIGHT (8-1)
+#define WARHEAD_HIT_HEIGHT (OBJ_H-1)
 
 
 /**
@@ -446,7 +463,7 @@
 /**
  * 弾頭　分裂数
  */
-#define MAX_MULTIPLE (3)
+#define MAX_MULTIPLE (4)
 
 
 /**
@@ -456,7 +473,7 @@
 /**
  * 弾頭　分裂位置　最大
  */
-#define MULTIPLE_START_MARGIN (20)
+#define MULTIPLE_START_MARGIN (25)
 
 
 
@@ -478,11 +495,11 @@
 /**
  * 爆風　当たり判定　幅
  */
-#define BOMB_HIT_WIDTH (16-1)
+#define BOMB_HIT_WIDTH (OBJ_W-1)
 /**
  * 爆風　当たり判定　高さ
  */
-#define BOMB_HIT_HEIGHT (16-1)
+#define BOMB_HIT_HEIGHT (OBJ_H-1)
 
 
 /**
@@ -494,11 +511,11 @@
 /**
  * 爆風　座標補正　X座標
  */
-#define BOMB_ADJUST_X (-5)
+#define BOMB_ADJUST_X (0)
 /**
  * 爆風　座標補正　Y座標
  */
-#define BOMB_ADJUST_Y (-5)
+#define BOMB_ADJUST_Y (0)
 
 
 /**
@@ -1154,39 +1171,50 @@ enum
 
 
 ///////////////////////////////////////////////////////////////////// タイル番号
+#define TILE_SIZE_8 (2)
+#define TILE_SIZE_16 (8)
+
 
 #define TILE_AIM1 (512)
-#define TILE_AIM2 (514)
-#define TILE_AIM3 (516)
-#define TILE_AIM4 (518)
+#define TILE_AIM2 (520)
+#define TILE_AIM3 (528)
+#define TILE_AIM4 (536)
 
-#define TILE_WARHEAD1 (520)
-#define TILE_WARHEAD2 (522)
+#define TILE_WARHEAD1 (544)
+#define TILE_WARHEAD2 (552)
 
-#define TILE_WARHEAD_UFO1 (524)
-#define TILE_WARHEAD_UFO2 (526)
+#define TILE_WARHEAD_UFO1 (560)
+#define TILE_WARHEAD_UFO2 (568)
 
-#define TILE_MARKER1 (528)
-#define TILE_MARKER2 (530)
+#define TILE_MARKER1 (576)
+#define TILE_MARKER2 (584)
 
-#define TILE_CITY1 (532)
-#define TILE_CITY2 (540)
-#define TILE_CITY3 (548)
-#define TILE_CITY4 (556)
+#define TILE_CITY1 (592)
+#define TILE_CITY2 (600)
+#define TILE_CITY3 (608)
+#define TILE_CITY4 (616)
 
-#define TILE_AMB1 (564)
+#define TILE_AMB1 (624)
 
-#define TILE_BOMB1 (596)
+// TILE_AMB2
+// TILE_AMB3
+// TILE_AMB4
 
-#define TILE_UFO (628)
+#define TILE_BOMB1 (656)
 
-#define TILE_ITEM1 (636)
-#define TILE_ITME1_2 (644)
+// TILE_BOMB2
+// TILE_BOMB3
+// TILE_BOMB4
 
-#define TILE_SUPERBOMB1 (652)
-#define TILE_SUPERBOMB2 (660)
+#define TILE_UFO (688)
 
-#define TILE_MODE_ARROW (668)
+#define TILE_ITEM1 (696)
+#define TILE_ITME1_2 (704)
+
+#define TILE_SUPERBOMB1 (712)
+#define TILE_SUPERBOMB2 (720)
+
+#define TILE_MODE_ARROW (728)
 
 
 

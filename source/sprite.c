@@ -125,52 +125,52 @@ init_sprite_chr (void)
 
   //aim
   CpuSet (sprite_aim1Tiles, oam, (COPY32 | sprite_aim1TilesLen / 4));
-  CpuSet (sprite_aim2Tiles, oam + 32, (COPY32 | sprite_aim1TilesLen / 4));
-  CpuSet (sprite_aim3Tiles, oam + 32 * 2, (COPY32 | sprite_aim1TilesLen / 4));
-  CpuSet (sprite_aim4Tiles, oam + 32 * 3, (COPY32 | sprite_aim1TilesLen / 4));
+  CpuSet (sprite_aim2Tiles, oam + 128, (COPY32 | sprite_aim1TilesLen / 4));
+  CpuSet (sprite_aim2Tiles, oam + 128 * 2, (COPY32 | sprite_aim1TilesLen / 4));
+  CpuSet (sprite_aim2Tiles, oam + 128 * 3, (COPY32 | sprite_aim1TilesLen / 4));
 
   //warhead
-  CpuSet (sprite_warhead1Tiles, oam + 32 * 4, (COPY32 | sprite_aim1TilesLen / 4));
-  CpuSet (sprite_warhead2Tiles, oam + 32 * 5, (COPY32 | sprite_aim1TilesLen / 4));
+  CpuSet (sprite_warhead1Tiles, oam + 128 * 4, (COPY32 | sprite_aim1TilesLen / 4));
+  CpuSet (sprite_warhead2Tiles, oam + 128 * 5, (COPY32 | sprite_aim1TilesLen / 4));
 
   //ufo warhead
-  CpuSet (sprite_ufo_warhead1Tiles, oam + 32 * 6, (COPY32 | sprite_aim1TilesLen / 4));
-  CpuSet (sprite_ufo_warhead2Tiles, oam + 32 * 7, (COPY32 | sprite_aim1TilesLen / 4));
+  CpuSet (sprite_ufo_warhead1Tiles, oam + 128 * 6, (COPY32 | sprite_aim1TilesLen / 4));
+  CpuSet (sprite_ufo_warhead2Tiles, oam + 128 * 7, (COPY32 | sprite_aim1TilesLen / 4));
 
   // marker
-  CpuSet (sprite_marker1Tiles, oam + 32 * 8, (COPY32 | sprite_aim1TilesLen / 4));
-  CpuSet (sprite_marker2Tiles, oam + 32 * 9, (COPY32 | sprite_aim1TilesLen / 4));
+  CpuSet (sprite_marker1Tiles, oam + 128 * 8, (COPY32 | sprite_aim1TilesLen / 4));
+  CpuSet (sprite_marker2Tiles, oam + 128 * 9, (COPY32 | sprite_aim1TilesLen / 4));
 
   //city
-  CpuSet (sprite_city1Tiles, oam + 32 * 10, (COPY32 | sprite_city1TilesLen / 4));
-  CpuSet (sprite_city2Tiles, oam + 32 * 10 + 128, (COPY32 | sprite_city1TilesLen / 4));
-  CpuSet (sprite_city3Tiles, oam + 32 * 10 + 128 * 2, (COPY32 | sprite_city1TilesLen / 4));
-  CpuSet (sprite_city4Tiles, oam + 32 * 10 + 128 * 3, (COPY32 | sprite_city1TilesLen / 4));
+  CpuSet (sprite_city1Tiles, oam + 128 * 10, (COPY32 | sprite_city1TilesLen / 4));
+  CpuSet (sprite_city2Tiles, oam + 128 * 11, (COPY32 | sprite_city1TilesLen / 4));
+  CpuSet (sprite_city3Tiles, oam + 128 * 12, (COPY32 | sprite_city1TilesLen / 4));
+  CpuSet (sprite_city4Tiles, oam + 128 * 13, (COPY32 | sprite_city1TilesLen / 4));
 
   //amb
-  CpuSet (sprite_amb1Tiles, oam + 32 * 10 + 128 * 4, (COPY32 | sprite_amb1TilesLen / 4));
-  CpuSet (sprite_amb2Tiles, oam + 32 * 10 + 128 * 5, (COPY32 | sprite_amb1TilesLen / 4));
-  CpuSet (sprite_amb3Tiles, oam + 32 * 10 + 128 * 6, (COPY32 | sprite_amb1TilesLen / 4));
-  CpuSet (sprite_amb4Tiles, oam + 32 * 10 + 128 * 7, (COPY32 | sprite_amb1TilesLen / 4));
+  CpuSet (sprite_amb1Tiles, oam + 128 * 14, (COPY32 | sprite_amb1TilesLen / 4));
+  CpuSet (sprite_amb2Tiles, oam + 128 * 15, (COPY32 | sprite_amb1TilesLen / 4));
+  CpuSet (sprite_amb3Tiles, oam + 128 * 16, (COPY32 | sprite_amb1TilesLen / 4));
+  CpuSet (sprite_amb4Tiles, oam + 128 * 17, (COPY32 | sprite_amb1TilesLen / 4));
 
   // bomb
-  CpuSet (sprite_bomb1Tiles, oam + 32 * 10 + 128 * 8, (COPY32 | sprite_amb1TilesLen / 4));
-  CpuSet (sprite_bomb2Tiles, oam + 32 * 10 + 128 * 9, (COPY32 | sprite_amb1TilesLen / 4));
-  CpuSet (sprite_bomb3Tiles, oam + 32 * 10 + 128 * 10, (COPY32 | sprite_amb1TilesLen / 4));
-  CpuSet (sprite_bomb4Tiles, oam + 32 * 10 + 128 * 11, (COPY32 | sprite_amb1TilesLen / 4));
+  CpuSet (sprite_bomb1Tiles, oam + 128 * 18, (COPY32 | sprite_amb1TilesLen / 4));
+  CpuSet (sprite_bomb2Tiles, oam + 128 * 19, (COPY32 | sprite_amb1TilesLen / 4));
+  CpuSet (sprite_bomb3Tiles, oam + 128 * 20, (COPY32 | sprite_amb1TilesLen / 4));
+  CpuSet (sprite_bomb4Tiles, oam + 128 * 21, (COPY32 | sprite_amb1TilesLen / 4));
 
   // ufo
-  CpuSet (sprite_ufoTiles, oam + 32 * 10 + 128 * 12, (COPY32 | sprite_amb1TilesLen / 4));
+  CpuSet (sprite_ufoTiles, oam + 128 * 22, (COPY32 | sprite_amb1TilesLen / 4));
 
   // item1
-  CpuSet (sprite_item1Tiles, oam + 32 * 10 + 128 * 13, (COPY32 | sprite_amb1TilesLen / 4));
-  CpuSet (sprite_item1_2Tiles, oam + 32 * 10 + 128 * 14, (COPY32 | sprite_amb1TilesLen / 4));
+  CpuSet (sprite_item1Tiles, oam + 128 * 23, (COPY32 | sprite_amb1TilesLen / 4));
+  CpuSet (sprite_item1_2Tiles, oam + 128 * 24, (COPY32 | sprite_amb1TilesLen / 4));
 
   // superbomb
-  CpuSet (sprite_superbomb1Tiles, oam + 32 * 10 + 128 * 15, (COPY32 | sprite_amb1TilesLen / 4));
-  CpuSet (sprite_superbomb2Tiles, oam + 32 * 10 + 128 * 16, (COPY32 | sprite_amb1TilesLen / 4));
+  CpuSet (sprite_superbomb1Tiles, oam + 128 * 25, (COPY32 | sprite_amb1TilesLen / 4));
+  CpuSet (sprite_superbomb2Tiles, oam + 128 * 26, (COPY32 | sprite_amb1TilesLen / 4));
 
   // mode arrow
-  CpuSet (sprite_arrowTiles, oam + 32 * 10 + 128 * 17, (COPY32 | sprite_amb1TilesLen / 4));
+  CpuSet (sprite_arrowTiles, oam + 128 * 27, (COPY32 | sprite_amb1TilesLen / 4));
 
 }

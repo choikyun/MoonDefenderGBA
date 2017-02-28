@@ -353,7 +353,7 @@ disp_aim ()
   if (am.max_missiles <= AMB_MISSILE_CAUTION)
   {
     // タイル変更
-    set_sprite_tile (SPRITE_AIM, TILE_AIM2);
+    set_sprite_tile (SPRITE_AIM, TILE_AIM1 + aim.sprite.show * TILE_SIZE_16);
 
     if (!--aim.flash.interval)
     {
@@ -365,15 +365,10 @@ disp_aim ()
   {
     // タイル変更
     set_sprite_tile (SPRITE_AIM, TILE_AIM1);
-
-    aim.sprite.show = true;
     aim.flash.interval = AIM_CAUTION_INTERVAL;
   }
 
-  if (aim.sprite.show)
-    move_sprite (aim.sprite.chr, aim.sprite.coord.x >> FIX, aim.sprite.coord.y >> FIX);
-  else
-    erase_sprite(aim.sprite.chr);
+  move_sprite (aim.sprite.chr, aim.sprite.coord.x >> FIX, aim.sprite.coord.y >> FIX);
 }
 
 
@@ -420,8 +415,7 @@ disp_marker ()
       am.marker_buf[i].anime.interval = am.marker_buf[i].anime.interval_rel;
       am.marker_buf[i].anime.frame = (am.marker_buf[i].anime.frame + 1) & am.marker_buf[i].anime.max_frame;
       // タイル変更
-      set_sprite_tile (SPRITE_MARKER + i,
-      TILE_MARKER1 + am.marker_buf[i].anime.frame * 2);
+      set_sprite_tile (SPRITE_MARKER + i, TILE_MARKER1 + am.marker_buf[i].anime.frame * TILE_SIZE_16);
     }
     move_sprite (am.marker_buf[i].sprite.chr + i, am.marker_buf[i].sprite.coord.x, am.marker_buf[i].sprite.coord.y);
   }
@@ -505,7 +499,7 @@ disp_amb ()
     game_state.intermission = INTERMISSION;
     game_state.next_scene = GAME_OVER;
     // タイル変更
-    set_sprite_tile (SPRITE_AMB, TILE_AMB1 + 8);
+    set_sprite_tile (SPRITE_AMB, TILE_AMB1 + TILE_SIZE_16);
 
     // 爆風発生
     set_bomb (amb.sprite.coord.x - BOMB_ADJUST_X, amb.sprite.coord.y);
@@ -543,7 +537,7 @@ disp_cities ()
       {
         cities[i].damage++;
         // タイル書き換え
-        set_sprite_tile (cities[i].sprite.chr, TILE_CITY1 + cities[i].damage * 8);
+        set_sprite_tile (cities[i].sprite.chr, TILE_CITY1 + cities[i].damage * TILE_SIZE_16);
       }
       if (cities[i].damage == CITY_MAX_DAMAGE)
       {
@@ -697,7 +691,7 @@ move_items ()
       supply.anime.interval = supply.anime.interval_rel;
       supply.anime.frame = (supply.anime.frame + 1) & supply.anime.max_frame;
       // タイル変更
-      set_sprite_tile (SPRITE_ITEM1, TILE_ITEM1 + supply.anime.frame * 8);
+      set_sprite_tile (SPRITE_ITEM1, TILE_ITEM1 + supply.anime.frame * TILE_SIZE_16);
     }
 
     move_sprite (supply.sprite.chr, supply.sprite.coord.x, supply.sprite.coord.y);
@@ -715,6 +709,7 @@ move_superbomb ()
   {
     if (is_hit_to_bombs (superbomb.sprite.coord.x, superbomb.sprite.coord.y, SUPERBOMB_HIT_WIDTH, SUPERBOMB_HIT_HEIGHT, BOMB_ANIME_MAX_FRAME))
     {
+      flash ();
       explosion();
 
       superbomb.is_used = false;
@@ -742,7 +737,7 @@ move_superbomb ()
       superbomb.anime.interval = superbomb.anime.interval_rel;
       superbomb.anime.frame = (superbomb.anime.frame + 1) & superbomb.anime.max_frame;
       // タイル変更
-      set_sprite_tile (SPRITE_ITEM2, TILE_SUPERBOMB1 + superbomb.anime.frame * 8);
+      set_sprite_tile (SPRITE_ITEM2, TILE_SUPERBOMB1 + superbomb.anime.frame * TILE_SIZE_16);
     }
 
     move_sprite (superbomb.sprite.chr, superbomb.sprite.coord.x, superbomb.sprite.coord.y);
@@ -1250,7 +1245,7 @@ disp_bomb ()
       bomb.buf[cur].anime.interval = bomb.buf[cur].anime.interval_rel;
       bomb.buf[cur].anime.frame = (bomb.buf[cur].anime.frame + 1) & bomb.buf[cur].anime.max_frame;
       // タイル変更
-      set_sprite_tile (bomb.buf[cur].sprite.chr + cur, TILE_BOMB1 + bomb.buf[cur].anime.frame * 8);
+      set_sprite_tile (bomb.buf[cur].sprite.chr + cur, TILE_BOMB1 + bomb.buf[cur].anime.frame * TILE_SIZE_16);
 
       if (!bomb.buf[cur].anime.frame)
       {
@@ -1310,7 +1305,7 @@ disp_warhead (int sprite_no, MissileType *m)
     m->anime.interval = m->anime.interval_rel;
     m->anime.frame = (m->anime.frame + 1) & m->anime.max_frame;
     // タイル変更
-    set_sprite_tile (m->sprite.chr + sprite_no, m->sprite.tile + m->anime.frame * 2);
+    set_sprite_tile (m->sprite.chr + sprite_no, m->sprite.tile + m->anime.frame * TILE_SIZE_16);
   }
 
   move_sprite (m->sprite.chr + sprite_no, m->sprite.coord.x, m->sprite.coord.y);
@@ -1523,7 +1518,7 @@ init_sprite_setting ()
 
 
   // aim
-  set_sprite_form (SPRITE_AIM, OBJ_SIZE(0), OBJ_SQUARE, OBJ_256_COLOR);
+  set_sprite_form (SPRITE_AIM, OBJ_SIZE(1), OBJ_SQUARE, OBJ_256_COLOR);
   set_sprite_tile (SPRITE_AIM, TILE_AIM1);
 
   // city
@@ -1540,21 +1535,21 @@ init_sprite_setting ()
   //warhead amb
   for (int i = 0; i < MAX_AMB_MISSILES; i++)
   {
-    set_sprite_form (SPRITE_WARHEAD_AMB + i, OBJ_SIZE(0), OBJ_SQUARE, OBJ_256_COLOR);
+    set_sprite_form (SPRITE_WARHEAD_AMB + i, OBJ_SIZE(1), OBJ_SQUARE, OBJ_256_COLOR);
     set_sprite_tile (SPRITE_WARHEAD_AMB + i, TILE_WARHEAD1);
   }
 
   //warhead
   for (int i = 0; i < MAX_ENEMY_MISSILES; i++)
   {
-    set_sprite_form (SPRITE_WARHEAD + i, OBJ_SIZE(0), OBJ_SQUARE, OBJ_256_COLOR);
+    set_sprite_form (SPRITE_WARHEAD + i, OBJ_SIZE(1), OBJ_SQUARE, OBJ_256_COLOR);
     set_sprite_tile (SPRITE_WARHEAD + i, TILE_WARHEAD1);
   }
 
   //marker
   for (int i = 0; i < MAX_AMB_MISSILES; i++)
   {
-    set_sprite_form (SPRITE_MARKER + i, OBJ_SIZE(0), OBJ_SQUARE, OBJ_256_COLOR);
+    set_sprite_form (SPRITE_MARKER + i, OBJ_SIZE(1), OBJ_SQUARE, OBJ_256_COLOR);
     set_sprite_tile (SPRITE_MARKER + i, TILE_MARKER1);
   }
 
@@ -1576,7 +1571,6 @@ init_sprite_setting ()
   // superbomb
   set_sprite_form (SPRITE_ITEM2, OBJ_SIZE(1), OBJ_SQUARE, OBJ_256_COLOR);
   set_sprite_tile (SPRITE_ITEM2, TILE_SUPERBOMB1);
-
 }
 
 
@@ -1631,6 +1625,10 @@ init_stage ()
 
   // アイテム初期化
   init_items ();
+
+  // 初期ミサイル配置
+  fire_enemy_missile (RND(0, SCREEN_WIDTH-1), MISSILE_START_Y, true);
+  fire_enemy_missile (RND(0, SCREEN_WIDTH-1), MISSILE_START_Y, true);
 }
 
 
@@ -1716,7 +1714,7 @@ init_missile ()
 {
   // レベルごとのパラメータ
   // max_missiles(amb), interval, max_launch, max_missiles(enemy), speed, ufo
-  static int level[][MAX_LEVEL][6] = {
+  static int level[][MAX_LEVEL][LEVEL_PARAM] = {
       // NOMAL
       {
         { 10, 240, 2, 20, 7, 0 },
@@ -1747,8 +1745,9 @@ init_missile ()
   };
 
   int lv = stage.lv - 1;
-  if (lv > MAX_LEVEL)
-    lv = MAX_LEVEL;
+  if (lv >= MAX_LEVEL)
+    lv = MAX_LEVEL - 1;
+
 
   // enemy
   enemy.interval = INIT_ENEMY_FIRE_INTERVAL;

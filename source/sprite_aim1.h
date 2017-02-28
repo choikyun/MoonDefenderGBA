@@ -3,12 +3,12 @@
 
 //======================================================================
 //
-//	sprite_aim1, 8x8@8, 
+//	sprite_aim1, 16x16@8, 
 //	+ palette 256 entries, not compressed
-//	+ 1 tiles not compressed
-//	Total size: 512 + 64 = 576
+//	+ 4 tiles not compressed
+//	Total size: 512 + 256 = 768
 //
-//	Time-stamp: 2017-02-06, 23:59:38
+//	Time-stamp: 2017-02-28, 22:26:57
 //	Exported by Cearn's GBA Image Transmogrifier, v0.8.6
 //	( http://www.coranac.com/projects/#grit )
 //
@@ -17,8 +17,8 @@
 #ifndef GRIT_SPRITE_AIM1_H
 #define GRIT_SPRITE_AIM1_H
 
-#define sprite_aim1TilesLen 64
-extern const unsigned short sprite_aim1Tiles[32];
+#define sprite_aim1TilesLen 256
+extern const unsigned short sprite_aim1Tiles[128];
 
 #define sprite_aim1PalLen 512
 extern const unsigned short sprite_aim1Pal[256];
