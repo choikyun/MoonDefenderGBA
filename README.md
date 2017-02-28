@@ -15,7 +15,7 @@ AMBiAnti-Missile-BatteryjA‚à‚µ‚­‚Í“sŽs‚ª‚·‚×‚Ä”j‰ó‚³‚ê‚é‚ÆƒQ[ƒ€ƒI[ƒo[‚Å‚·
 ƒQ[ƒ€‚ÉI‚í‚è‚Í‚È‚¢‚Ì‚Å‚Ð‚½‚·‚çƒXƒRƒA‚ð‰Ò‚¢‚Å‚­‚¾‚³‚¢B  
 
 ƒ~ƒTƒCƒ‹‚ðŒ‚”j‚µ‚½‚“x~Žc‚è“sŽs”‚ªƒXƒRƒA‚É‚È‚è‚Ü‚·Biã‹ó‚Ì‚Ù‚¤‚ªƒXƒRƒA‚Í‚‚¢‚Å‚·j  
-‚È‚¨A“sŽs‚ð”j‰ó‚³‚ê‚½Œã‚É”šŒ‚‚ðŽó‚¯‚é‚ÆƒXƒRƒA‚ªŒ¸ŽZ‚³‚ê‚Ü‚·B  
+‚È‚¨A“sŽs‚ð”j‰ó‚³‚ê‚½Œã‚ÌX’n‚ð”šŒ‚‚³‚ê‚é‚ÆƒXƒRƒA‚ªŒ¸ŽZ‚³‚ê‚Ü‚·B  
 
 ###‘€ì
 
@@ -23,6 +23,7 @@ AMBiAnti-Missile-BatteryjA‚à‚µ‚­‚Í“sŽs‚ª‚·‚×‚Ä”j‰ó‚³‚ê‚é‚ÆƒQ[ƒ€ƒI[ƒo[‚Å‚·
 
 * **SELECT**@ƒ‚[ƒh‘I‘ð
 * **START**@ƒQ[ƒ€ŠJŽn
+* **R+B**@ƒnƒCƒXƒRƒAƒNƒŠƒA
 
 **ƒQ[ƒ€‰æ–Ê**
 
@@ -39,16 +40,16 @@ AMBiAnti-Missile-BatteryjA‚à‚µ‚­‚Í“sŽs‚ª‚·‚×‚Ä”j‰ó‚³‚ê‚é‚ÆƒQ[ƒ€ƒI[ƒo[‚Å‚·
 
 **“G**
 
-* **’Êí‚Ìƒ~ƒTƒCƒ‹**@ƒŒƒxƒ‹‚ªã‚ª‚é‚²‚Æ‚É‘¬‚­‚È‚éB‚½‚Ü‚É’e“ª‚ª•ª—ôB
+* **’Êí‚Ìƒ~ƒTƒCƒ‹**@“sŽs‚ð‘_‚Á‚Ä‚­‚éBƒŒƒxƒ‹‚ªã‚ª‚é‚²‚Æ‚É‘¬‚­‚È‚éB‚½‚Ü‚É’e“ª‚ª•ª—ôB
 * **UFO**@AMB–ÚŠ|‚¯‚Ä‚‘¬’e‚ðŒ‚‚Á‚Ä‚­‚éB
 
 ##Žg—p‘fÞ
 ‚±‚¿‚ç‚©‚ç‚¨ŽØ‚è‚µ‚Ü‚µ‚½B  
 i˜R‚ê‚ª‚ ‚Á‚½‚ç‚·‚Ý‚Ü‚¹‚ñBŽw“E‚µ‚Ä‰º‚³‚¢j  
 
-BGM  
+* BGM  
 <https://www.playonloop.com/>  
-SE  
+* SE  
 <http://www.littlerobotsoundfactory.com/>  
 <http://www.skipmore.com/>  
 <http://www.orangefreesounds.com/>  
