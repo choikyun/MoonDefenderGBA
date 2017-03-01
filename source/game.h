@@ -420,6 +420,15 @@
  */
 #define UFO_MISSILE_SPEED (2)
 
+/**
+ * UFO ミサイル　X座標補正
+ */
+#define UFO_MISSILE_ADJUST_X (6)
+/**
+ * UFO ミサイル　Y座標補正
+ */
+#define UFO_MISSILE_ADJUST_Y (4)
+
 
 
 /***************************************************

@@ -1345,7 +1345,7 @@ move_ufo ()
   else if (!--ufo.stop_time)
   {
     // UFミサイル
-    fire_ufo_missile (ufo.sprite.coord.x, ufo.sprite.coord.y);
+    fire_ufo_missile (ufo.sprite.coord.x + UFO_MISSILE_ADJUST_X, ufo.sprite.coord.y + UFO_MISSILE_ADJUST_Y);
   }
 
   move_sprite (ufo.sprite.chr, ufo.sprite.coord.x, ufo.sprite.coord.y);
