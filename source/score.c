@@ -26,12 +26,26 @@
 void
 init_hiscore (void)
 {
-  if (!SRAMRead8(SRAM_CHECK_HISC))
+  if (SRAMRead32(SRAM_CHECK) != SRAM_ON)
   {
     hiscore = 0;
-    SRAMWrite32 (SRAM_HISCORE_NOMAL, 0);
+    SRAMWrite32 (SRAM_HISCORE_NORMAL, 0);
     SRAMWrite32 (SRAM_HISCORE_HARD, 0);
-    SRAMWrite8 (SRAM_CHECK_HISC, SRAM_ON);
+    SRAMWrite32 (SRAM_CHECK, SRAM_ON);
+
+    SRAMWrite32(SRAM_TROPHY_NORMAL, 0);
+    SRAMWrite32(SRAM_TROPHY_NORMAL+4, 0);
+    SRAMWrite32(SRAM_TROPHY_NORMAL+8, 0);
+    SRAMWrite32(SRAM_TROPHY_NORMAL+12, 0);
+    SRAMWrite32(SRAM_TROPHY_NORMAL+16, 0);
+    SRAMWrite32(SRAM_TROPHY_NORMAL+20, 0);
+
+    SRAMWrite32(SRAM_TROPHY_HARD, 0);
+    SRAMWrite32(SRAM_TROPHY_HARD+4, 0);
+    SRAMWrite32(SRAM_TROPHY_HARD+8, 0);
+    SRAMWrite32(SRAM_TROPHY_HARD+12, 0);
+    SRAMWrite32(SRAM_TROPHY_HARD+16, 0);
+    SRAMWrite32(SRAM_TROPHY_HARD+20, 0);
   }
 }
 
@@ -41,42 +55,112 @@ init_hiscore (void)
 void
 clear_hiscore (void)
 {
-  SRAMWrite8 (SRAM_CHECK_HISC, 0);
-  SRAMWrite32 (SRAM_HISCORE_NOMAL, 0);
+  SRAMWrite32 (SRAM_HISCORE_NORMAL, 0);
   SRAMWrite32 (SRAM_HISCORE_HARD, 0);
   hiscore = 0;
+
+  SRAMWrite32(SRAM_TROPHY_NORMAL, 0);
+  SRAMWrite32(SRAM_TROPHY_NORMAL+4, 0);
+  SRAMWrite32(SRAM_TROPHY_NORMAL+8, 0);
+  SRAMWrite32(SRAM_TROPHY_NORMAL+12, 0);
+  SRAMWrite32(SRAM_TROPHY_NORMAL+16, 0);
+  SRAMWrite32(SRAM_TROPHY_NORMAL+20, 0);
+
+  SRAMWrite32(SRAM_TROPHY_HARD, 0);
+  SRAMWrite32(SRAM_TROPHY_HARD+4, 0);
+  SRAMWrite32(SRAM_TROPHY_HARD+8, 0);
+  SRAMWrite32(SRAM_TROPHY_HARD+12, 0);
+  SRAMWrite32(SRAM_TROPHY_HARD+16, 0);
+  SRAMWrite32(SRAM_TROPHY_HARD+20, 0);
 }
 
 /***************************************************
  ハイスコア セーブ
  ***************************************************/
 void
-save_hiscore (u32 sc)
+save_hiscore (int sc)
 {
-  u8 check = SRAMRead8 (SRAM_CHECK_HISC);
+  u32 check = SRAMRead32 (SRAM_CHECK);
 
-  if (sc > hiscore && check && stage.mode == 0)
-    SRAMWrite32 (SRAM_HISCORE_NOMAL, sc);
-  else if (sc > hiscore && check && stage.mode == 1)
+  if (sc > hiscore && check == SRAM_ON && stage.mode == 0)
+    SRAMWrite32 (SRAM_HISCORE_NORMAL, sc);
+  else if (sc > hiscore && check == SRAM_ON && stage.mode == 1)
     SRAMWrite32 (SRAM_HISCORE_HARD, sc);
+
+  // トロフィー
+  save_trophy(trophy_unlocked);
 }
 
 /***************************************************
  ハイスコア　ロード
  ***************************************************/
-u32
+int
 load_hiscore ()
 {
-  u32 hi;
+  int hi;
 
   if (stage.mode == 0)
-    hi = SRAMRead32 (SRAM_HISCORE_NOMAL);
+    hi = SRAMRead32 (SRAM_HISCORE_NORMAL);
   else
     hi = SRAMRead32 (SRAM_HISCORE_HARD);
+
+  // トロフィー
+  load_trophy(trophy_unlocked);
 
   return hi;
 }
 
+/***************************************************
+トロフィー　セーブ
+ ***************************************************/
+void
+save_trophy (bool *tropthy_unlocked)
+{
+  if (stage.mode == 0)
+  {
+    SRAMWrite32(SRAM_TROPHY_NORMAL, tropthy_unlocked[0]);
+    SRAMWrite32(SRAM_TROPHY_NORMAL+4, tropthy_unlocked[1]);
+    SRAMWrite32(SRAM_TROPHY_NORMAL+8, tropthy_unlocked[2]);
+    SRAMWrite32(SRAM_TROPHY_NORMAL+12, tropthy_unlocked[3]);
+    SRAMWrite32(SRAM_TROPHY_NORMAL+16, tropthy_unlocked[4]);
+    SRAMWrite32(SRAM_TROPHY_NORMAL+20, tropthy_unlocked[5]);
+  }
+  else
+  {
+    SRAMWrite32(SRAM_TROPHY_HARD, tropthy_unlocked[0]);
+    SRAMWrite32(SRAM_TROPHY_HARD+4, tropthy_unlocked[1]);
+    SRAMWrite32(SRAM_TROPHY_HARD+8, tropthy_unlocked[2]);
+    SRAMWrite32(SRAM_TROPHY_HARD+12, tropthy_unlocked[3]);
+    SRAMWrite32(SRAM_TROPHY_HARD+16, tropthy_unlocked[4]);
+    SRAMWrite32(SRAM_TROPHY_HARD+20, tropthy_unlocked[5]);
+  }
+}
+
+/***************************************************
+トロフィー　ロード
+ ***************************************************/
+void
+load_trophy (bool *tropthy_unlocked)
+{
+  if (stage.mode == 0)
+  {
+    tropthy_unlocked[0] = SRAMRead32 (SRAM_TROPHY_NORMAL);
+    tropthy_unlocked[1] = SRAMRead32 (SRAM_TROPHY_NORMAL+4);
+    tropthy_unlocked[2] = SRAMRead32 (SRAM_TROPHY_NORMAL+8);
+    tropthy_unlocked[3] = SRAMRead32 (SRAM_TROPHY_NORMAL+12);
+    tropthy_unlocked[4] = SRAMRead32 (SRAM_TROPHY_NORMAL+16);
+    tropthy_unlocked[5] = SRAMRead32 (SRAM_TROPHY_NORMAL+20);
+  }
+  else
+  {
+    tropthy_unlocked[0] = SRAMRead32 (SRAM_TROPHY_HARD);
+    tropthy_unlocked[1] = SRAMRead32 (SRAM_TROPHY_HARD+4);
+    tropthy_unlocked[2] = SRAMRead32 (SRAM_TROPHY_HARD+8);
+    tropthy_unlocked[3] = SRAMRead32 (SRAM_TROPHY_HARD+12);
+    tropthy_unlocked[4] = SRAMRead32 (SRAM_TROPHY_HARD+16);
+    tropthy_unlocked[5] = SRAMRead32 (SRAM_TROPHY_HARD+20);
+  }
+}
 
 /***************************************************
  SRAM操作　http://akkera102.sakura.ne.jp/gbadev/index.php?Doc.8%20GBA%A4%CE%BB%C5%CD%CD%A4%CB%A4%C4%A4%A4%A4%C6%28SRAM%29

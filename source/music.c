@@ -36,9 +36,9 @@ const WaveListType SoundList[] =
     { s0_bin, SAMPLING_S0, 30 }, // ミサイル発射
     { s1_bin, SAMPLING_S1, 50 }, // ロックオン
     { s2_bin, SAMPLING_S2, 20 }, // 爆発
-    { s3_bin, SAMPLING_S3, 1 }, // ゲームオーバー
+    { s3_bin, SAMPLING_S3, 2 }, // ゲームオーバー
     { s4_bin, SAMPLING_S4, 10}, // アイテム
-    { s5_bin, SAMPLING_S5, 10 }, // レベルアップ
+    { s5_bin, SAMPLING_S5, 1 }, // レベルアップ
     { s6_bin, SAMPLING_S6, 5 }, // 都市破壊
   };
 

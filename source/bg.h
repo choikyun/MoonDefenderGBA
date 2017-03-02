@@ -27,6 +27,9 @@
 #include "bmp_over.h"
 #include "bmp_lv_black.h"
 #include "bmp_pause.h"
+#include "bmp_unlocked.h"
+#include "bmp_trophy.h"
+#include "bmp_notrophy.h"
 
 
 

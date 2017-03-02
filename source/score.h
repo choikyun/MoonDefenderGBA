@@ -28,11 +28,16 @@
 void
 init_hiscore ();
 void
-save_hiscore (u32 sc);
-u32
+save_hiscore (int sc);
+int
 load_hiscore ();
 void
 clear_hiscore ();
+void
+save_trophy (bool *);
+void
+load_trophy (bool *);
+
 
 u8
 SRAMRead8 (u32 offset);

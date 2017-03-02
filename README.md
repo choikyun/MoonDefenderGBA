@@ -17,6 +17,10 @@ AMBiAnti-Missile-BatteryjA‚à‚µ‚­‚Í“sŽs‚ª‚·‚×‚Ä”j‰ó‚³‚ê‚é‚ÆƒQ[ƒ€ƒI[ƒo[‚Å‚·
 ƒ~ƒTƒCƒ‹‚ðŒ‚”j‚µ‚½‚“x~Žc‚è“sŽs”‚ªƒXƒRƒA‚É‚È‚è‚Ü‚·Biã‹ó‚Ì‚Ù‚¤‚ªƒXƒRƒA‚Í‚‚¢‚Å‚·j  
 ‚È‚¨A“sŽs‚ð”j‰ó‚³‚ê‚½Œã‚ÌX’n‚ð”šŒ‚‚³‚ê‚é‚ÆƒXƒRƒA‚ªŒ¸ŽZ‚³‚ê‚Ü‚·B  
 
+###ƒgƒƒtƒB[
+ƒvƒŒƒC’†A‚ ‚éðŒ‚ðƒNƒŠƒA‚·‚é‚ÆƒgƒƒtƒB[‚ª‚à‚ç‚¦‚Ü‚·B  
+ƒgƒƒtƒB[‚Í6ŒÂ‚ ‚è‚Ü‚·B‚¢‚­‚ÂŠl“¾‚µ‚½‚©‚Íƒ^ƒCƒgƒ‹‰æ–Ê‚ÅŠm”F‚Å‚«‚Ü‚·B  
+
 ###‘€ì
 
 **ƒ^ƒCƒgƒ‹‰æ–Ê**

@@ -1,7 +1,8 @@
 ﻿/**
  * @file game.c
  * @brief ゲーム本体
- * @date  2017/02/01 更新
+ * @date  2017/02/01 作成
+ * @date  2017/03/03 更新
  * @author Choe Gyun(choikyun)
  */
 
@@ -39,9 +40,9 @@ init_stage ();
 static void
 pause ();
 static void
-add_score (u32);
+add_score (int);
 static void
-sub_score (u32);
+sub_score (int);
 static void
 update_lv ();
 static void
@@ -105,6 +106,8 @@ is_hit_to_bombs (int, int, int, int, int);
 static void
 reset_message (BlinkMessageType *);
 static void
+reset_message_fast (BlinkMessageType *);
+static void
 disp_warning ();
 static void
 draw_bg ();
@@ -140,6 +143,12 @@ static void
 select_mode ();
 static void
 disp_pause ();
+static void
+trophy ();
+static void
+disp_trophy_mes ();
+static void
+disp_trophy ();
 
 
 //debug
@@ -185,7 +194,9 @@ game ()
       update_score ();
       update_lv ();
       update_remining_missiles ();
+      trophy ();
       level_up ();
+      disp_trophy_mes ();
       manage_stage_level ();
       disp_amb ();
       disp_marker ();
@@ -1370,6 +1381,7 @@ disp_title ()
   else if ((key & KEY_R) && (key & KEY_B))
   {
     clear_hiscore ();
+    init_trophy ();
     update_hiscore ();
   }
 }
@@ -1491,6 +1503,9 @@ init_game ()
   score = 0;
   stage.lv = 1;
 
+  // トロフィー
+  init_trophy ();
+
   // ハイスコアのロード
   hiscore = load_hiscore ();
 
@@ -1501,6 +1516,19 @@ init_game ()
   init_cities ();
 }
 
+
+
+/**********************************************//**
+ * @brief トロフィー初期化
+ ***********************************************/
+void
+init_trophy ()
+{
+  for (int i = 0; i < MAX_TROPHY; i++)
+  {
+    trophy_unlocked[i] = false;
+  }
+}
 
 
 /**********************************************//**
@@ -1590,8 +1618,13 @@ restart ()
   // score
   update_score ();
 
+  // メッセージ初期化
   reset_message (&mes);
   reset_message (&lv_mes);
+
+  reset_message_fast (&trophy_mes);
+
+
 
   // 次のシーンまで
   game_state.intermission = 0;
@@ -1813,7 +1846,7 @@ pause ()
 static void
 add_enemy_score (int y)
 {
-  static u32 scores[] = { 0, 100, 200, 400, 800 };
+  static int scores[] = { 0, 100, 200, 400, 800 };
 
   add_score (scores[(int) ((SCREEN_HEIGHT - y) / SCORE_HEIGHT_RANGE)] * stage.cities);
 }
@@ -1825,7 +1858,7 @@ add_enemy_score (int y)
  * @param num 加点
  ***********************************************/
 static void
-add_score (u32 num)
+add_score (int num)
 {
   score += num;
   update_score ();
@@ -1834,11 +1867,11 @@ add_score (u32 num)
 
 
 /**********************************************//**
- * @brief スコア加算
- * @param num 加点
+ * @brief スコア減点
+ * @param num 減点
  ***********************************************/
 static void
-sub_score (u32 num)
+sub_score (int num)
 {
   score -= num;
   if (score < 0)
@@ -1876,7 +1909,7 @@ update_score ()
 {
   int i;
   int pos = SCORE_DIGIT * NUM_W - NUM_W;
-  u32 sc = score;
+  int sc = score;
 
   for (i = 0; i < SCORE_DIGIT; i++)
   {
@@ -1896,13 +1929,32 @@ update_hiscore ()
 {
   int i;
   int pos = SCORE_DIGIT * NUM_W - NUM_W;
-  u32 sc = hiscore;
+  int sc = hiscore;
 
   for (i = 0; i < SCORE_DIGIT; i++)
   {
     disp_num_title (HISCORE_X + pos, HISCORE_Y, sc % 10);
     sc /= 10;
     pos -= (NUM_W);
+  }
+
+  disp_trophy ();
+}
+
+
+void
+disp_trophy ()
+{
+  int x = TROPHY_X;
+  // トロフィー表示
+  for (int i = 0; i < MAX_TROPHY; i++)
+  {
+    if (trophy_unlocked[i])
+      draw_bitmap8 (x, TROPHY_Y, TROPHY_W, TROPHY_H, bmp_trophyBitmap);
+    else
+      draw_bitmap8 (x, TROPHY_Y, TROPHY_W, TROPHY_H, bmp_notrophyBitmap);
+
+    x += TROPHY_W;
   }
 }
 
@@ -2009,7 +2061,7 @@ level_up ()
 
 
 /**********************************************//**
- * @brief メッセージ用パラメータのリセット
+ * @brief 点滅メッセージ用パラメータのリセット
  * @param *m メッセージパラメータポインタ
  ***********************************************/
 static void
@@ -2017,8 +2069,23 @@ reset_message (BlinkMessageType *m)
 {
   m->is_start = false;
   m->count = MES_COUNT;
-  m->chr = 0;
+  m->chr = 1;
   m->wait = m->wait_rel = MES_WAIT;
+}
+
+
+
+/**********************************************//**
+ * @brief 点滅メッセージ用パラメータのリセット
+ * @param *m メッセージパラメータポインタ
+ ***********************************************/
+static void
+reset_message_fast (BlinkMessageType *m)
+{
+  m->is_start = false;
+  m->count = MES_COUNT * 2;
+  m->chr = 1;
+  m->wait = m->wait_rel = MES_WAIT / 2;
 }
 
 
@@ -2077,6 +2144,110 @@ draw_bg ()
     // 通常のBG
     load_frame_bitmap (DEF_BG_BITMAP);
   }
+}
+
+
+
+/**********************************************//**
+ * トロフィー（実績）解除
+ ***********************************************/
+static void
+trophy ()
+{
+  /*
+   * 実績２：レベル10に到達
+   */
+  if (stage.lv == MAX_LEVEL
+      && !trophy_unlocked[1])
+  {
+    trophy_unlocked[1] = true;
+    trophy_mes.is_start = true;
+    return;
+  }
+
+  /*
+   * 実績１：レベル5まで都市を守った
+   */
+  if (!cities[0].damage
+      && !cities[1].damage
+      && !cities[2].damage
+      && !cities[3].damage
+      && !cities[4].damage
+      && !cities[5].damage
+      && stage.lv == 5
+      && !trophy_unlocked[0])
+  {
+    trophy_unlocked[0] = true;
+    trophy_mes.is_start = true;
+    return;
+  }
+
+  /*
+   * 実績４：弾を20発以上残した
+   */
+  if (lv_mes.is_start && am.max_missiles >= 20 && !trophy_unlocked[3])
+  {
+    trophy_unlocked[3] = true;
+    trophy_mes.is_start = true;
+    return;
+  }
+
+  /*
+   * 実績３：弾を10発以上残した
+   */
+  if (lv_mes.is_start && am.max_missiles >= 10 && !trophy_unlocked[2])
+  {
+    trophy_unlocked[2] = true;
+    trophy_mes.is_start = true;
+    return;
+  }
+
+  /*
+   * 実績５：スコアが100万突破
+   */
+  if (score >= 1000000 && !trophy_unlocked[5])
+  {
+    trophy_unlocked[5] = true;
+    trophy_mes.is_start = true;
+    return;
+  }
+
+  /*
+   * 実績５：スコアが50万突破
+   */
+  if (score >= 500000 && !trophy_unlocked[4])
+  {
+    trophy_unlocked[4] = true;
+    trophy_mes.is_start = true;
+    return;
+  }
+}
+
+
+
+/**********************************************//**
+ *  トロフィー獲得メッセージ
+ ***********************************************/
+static void
+disp_trophy_mes ()
+{
+  if (!trophy_mes.is_start)
+    return;
+
+  // 点滅
+  if (!--trophy_mes.wait)
+  {
+    trophy_mes.wait = trophy_mes.wait_rel;
+    trophy_mes.chr ^= 1;
+
+    if (!--trophy_mes.count)
+    {
+      reset_message_fast (&trophy_mes);
+    }
+  }
+
+  if (trophy_mes.chr)
+    draw_bitmap_frame (UNLOCK_MES_X, UNLOCK_MES_Y, UNLOCK_MES_W, UNLOCK_MES_H, bmp_unlockedBitmap);
 }
 
 

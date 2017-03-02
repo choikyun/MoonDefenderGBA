@@ -29,6 +29,7 @@
 
 ///////////////////////////////////////////////////////////////////// 各種定義
 
+
 /***************************************************
  * 汎用的な定義
  ***************************************************/
@@ -794,8 +795,33 @@
 /**
  * ハイスコア　Y座標
  */
-#define HISCORE_Y (65)
+#define HISCORE_Y (64)
 
+
+
+
+/***************************************************
+ *　トロフィー
+ ***************************************************/
+
+/**
+ * トロフィーの数
+ */
+#define MAX_TROPHY (6)
+
+#define UNLOCK_MES_X (90)
+#define UNLOCK_MES_Y (76)
+
+#define UNLOCK_MES_INTERVAL (6)
+
+#define UNLOCK_MES_W (48)
+#define UNLOCK_MES_H (7)
+
+
+#define TROPHY_X (192)
+#define TROPHY_Y (1)
+#define TROPHY_W (8)
+#define TROPHY_H (8)
 
 
 
@@ -1232,15 +1258,22 @@ enum
 /**
  * ハイスコアSRAM保存用
  */
-#define SRAM_CHECK_HISC (0)
+#define SRAM_CHECK (0)
 /**
  * ハイスコアSRAM保存用
  */
-#define SRAM_HISCORE_NOMAL (4)
+#define SRAM_HISCORE_NORMAL (4)
 /**
  * ハイスコアSRAM保存用
  */
 #define SRAM_HISCORE_HARD (8)
+
+/**
+ * トロフィーフラグ
+ */
+#define SRAM_TROPHY_NORMAL (12) // 4*6
+
+#define SRAM_TROPHY_HARD (36) // 4*6
 
 
 /**
@@ -1258,7 +1291,7 @@ enum
 /**
  * SRAM書き込みフラグ
  */
-#define SRAM_ON (1)
+#define SRAM_ON ((u32)0xf0f0f0f0)
 
 
 
@@ -1344,11 +1377,11 @@ GLOBAL UFOType ufo;
 /**
  * スコア
  */
-GLOBAL u32 score;
+GLOBAL int score;
 /**
  * ハイスコア
  */
-GLOBAL u32 hiscore;
+GLOBAL int hiscore;
 
 /**
  * メッセージ表示
@@ -1358,6 +1391,10 @@ GLOBAL BlinkMessageType mes;
  *　メッセージ表示
  */
 GLOBAL BlinkMessageType lv_mes;
+/**
+ *　メッセージ表示
+ */
+GLOBAL BlinkMessageType trophy_mes;
 
 /**
  * 乱数の種
@@ -1368,6 +1405,11 @@ GLOBAL u32 seed;
  * 現在のステージBGM
  */
 GLOBAL int stage_bgm;
+
+/**
+ * トロフィー解除フラグ
+ */
+GLOBAL bool trophy_unlocked[MAX_TROPHY];
 
 
 
