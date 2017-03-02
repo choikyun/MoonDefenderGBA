@@ -809,18 +809,44 @@
  */
 #define MAX_TROPHY (6)
 
+/**
+ * アンロックメッセージ　X座標
+ */
 #define UNLOCK_MES_X (90)
+/**
+ * アンロックメッセージ　Y座標
+ */
 #define UNLOCK_MES_Y (76)
 
+/**
+ * アンロックメッセージ　インターバル
+ */
 #define UNLOCK_MES_INTERVAL (6)
 
+/**
+ * アンロックメッセージ　幅
+ */
 #define UNLOCK_MES_W (48)
+/**
+ * アンロックメッセージ　高さ
+ */
 #define UNLOCK_MES_H (7)
 
-
+/**
+ * トロフィーマーク　X座標
+ */
 #define TROPHY_X (192)
+/**
+ * トロフィーマーク　Y座標
+ */
 #define TROPHY_Y (1)
+/**
+ * トロフィーマーク　幅
+ */
 #define TROPHY_W (8)
+/**
+ * トロフィーマーク　高さ
+ */
 #define TROPHY_H (8)
 
 
