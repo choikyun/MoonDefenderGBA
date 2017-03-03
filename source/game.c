@@ -149,6 +149,8 @@ static void
 disp_trophy_mes ();
 static void
 disp_trophy ();
+static void
+init_trophy ();
 
 
 //debug
@@ -2073,7 +2075,7 @@ reset_message (BlinkMessageType *m)
 {
   m->is_start = false;
   m->count = MES_COUNT;
-  m->chr = 1;
+  m->chr = 0;
   m->wait = m->wait_rel = MES_WAIT;
 }
 
@@ -2088,7 +2090,7 @@ reset_message_fast (BlinkMessageType *m)
 {
   m->is_start = false;
   m->count = MES_COUNT * 2;
-  m->chr = 1;
+  m->chr = 0;
   m->wait = m->wait_rel = MES_WAIT / 2;
 }
 
@@ -2159,7 +2161,7 @@ static void
 trophy ()
 {
   /*
-   * 実績２：レベル10に到達
+   * 実績2：レベル10に到達
    */
   if (stage.lv == MAX_LEVEL
       && !trophy_unlocked[1])
@@ -2170,7 +2172,7 @@ trophy ()
   }
 
   /*
-   * 実績１：レベル5まで都市を守った
+   * 実績1：レベル3まで都市を守った
    */
   if (!cities[0].damage
       && !cities[1].damage
@@ -2178,7 +2180,7 @@ trophy ()
       && !cities[3].damage
       && !cities[4].damage
       && !cities[5].damage
-      && stage.lv == 5
+      && stage.lv == 3
       && !trophy_unlocked[0])
   {
     trophy_unlocked[0] = true;
@@ -2187,7 +2189,7 @@ trophy ()
   }
 
   /*
-   * 実績４：弾を20発以上残した
+   * 実績4：弾を20発以上残した
    */
   if (lv_mes.is_start && am.max_missiles >= 20 && !trophy_unlocked[3])
   {
@@ -2197,7 +2199,7 @@ trophy ()
   }
 
   /*
-   * 実績３：弾を10発以上残した
+   * 実績3：弾を10発以上残した
    */
   if (lv_mes.is_start && am.max_missiles >= 10 && !trophy_unlocked[2])
   {
@@ -2207,7 +2209,7 @@ trophy ()
   }
 
   /*
-   * 実績５：スコアが100万突破
+   * 実績6：スコアが100万突破
    */
   if (score >= 1000000 && !trophy_unlocked[5])
   {
@@ -2217,7 +2219,7 @@ trophy ()
   }
 
   /*
-   * 実績５：スコアが50万突破
+   * 実績5：スコアが50万突破
    */
   if (score >= 500000 && !trophy_unlocked[4])
   {
