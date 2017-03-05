@@ -251,7 +251,7 @@ game ()
 static void
 aim_missile ()
 {
-  if (game_state.scene != GAME_MAIN)
+  if (game_state.next_scene == GAME_OVER)
     return;
 
   if ((game_state.key & KEY_A))
@@ -1609,6 +1609,7 @@ static void
 restart ()
 {
   game_state.scene = GAME_READY;
+  game_state.next_scene = GAME_MAIN;
 
   // ランダマイズ
   srand (REG_TM0CNT + seed);
@@ -1623,10 +1624,8 @@ restart ()
   // メッセージ初期化
   reset_message (&mes);
   reset_message (&lv_mes);
-
+  // トロフィー用メッセージ初期化
   reset_message_fast (&trophy_mes);
-
-
 
   // 次のシーンまで
   game_state.intermission = 0;

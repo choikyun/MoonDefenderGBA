@@ -201,7 +201,7 @@
 /**
  * AIM警告点滅間隔
  */
-#define AIM_CAUTION_INTERVAL (10)
+#define AIM_CAUTION_INTERVAL (3)
 
 
 /**
