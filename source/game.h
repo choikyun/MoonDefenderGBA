@@ -614,7 +614,7 @@
 /**
  * 反応弾　敵ミサイルがこれ以上なら投下開始
  */
-#define SUPERBOMB_ENEMY_UPPERLIMIT (10)
+#define SUPERBOMB_ENEMY_UPPERLIMIT (8)
 
 
 /**
@@ -626,7 +626,7 @@
 /**
  * 反応弾　出現間隔
  */
-#define SUPERBOMB_DROP_INTERVAL (800)
+#define SUPERBOMB_DROP_INTERVAL (400)
 
 
 /**
