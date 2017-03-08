@@ -80,7 +80,7 @@ init_missile ();
 static bool
 is_attacked_target (MissileType *);
 static void
-draw_line (MissileType *);
+draw_line (MissileType *, int);
 static void
 move_enemy_missile ();
 static void
@@ -996,7 +996,7 @@ move_enemy_missile ()
   for (int i = enemy.index; i > 0; i--, cur--)
   {
     // ミサイルの弾道
-    draw_line (&enemy.buf[cur]);
+    draw_line (&enemy.buf[cur], PAL_ENEMY_MISSILE);
 
     // ミサイルの弾頭
     disp_warhead (cur, &enemy.buf[cur]);
@@ -1084,7 +1084,7 @@ move_amb_missile ()
   for (int i = am.index; i > 0; i--, cur--)
   {
     // ミサイルの弾道
-    draw_line (&am.buf[cur]);
+    draw_line (&am.buf[cur], PAL_ENEMY_MISSILE);
 
     // ミサイルの弾頭
     disp_warhead (cur, &am.buf[cur]);
@@ -1119,7 +1119,7 @@ move_amb_missile ()
  * @param *m ミサイルポインタ
  ***********************************************/
 static void
-draw_line (MissileType *m)
+draw_line (MissileType *m, int color)
 {
   int x = m->start.x;
   int y = m->start.y;
@@ -1138,7 +1138,7 @@ draw_line (MissileType *m)
     {
       m->sprite.coord.x = x + WARHEAD_ADJUST_X;
       m->sprite.coord.y = y + WARHEAD_ADJUST_Y;
-      pset8_frame (x, y, PAL_ENEMY_MISSILE);
+      pset8_frame (x, y, color);
 
       y += m->direc.y;
     }
@@ -1153,7 +1153,7 @@ draw_line (MissileType *m)
     {
       m->sprite.coord.x = x + WARHEAD_ADJUST_X;
       m->sprite.coord.y = y + WARHEAD_ADJUST_Y;
-      pset8_frame (x, y, PAL_ENEMY_MISSILE);
+      pset8_frame (x, y, color);
 
       if (e >= 0)
       {
@@ -1174,7 +1174,7 @@ draw_line (MissileType *m)
     {
       m->sprite.coord.x = x + WARHEAD_ADJUST_X;
       m->sprite.coord.y = y + WARHEAD_ADJUST_Y;
-      pset8_frame (x, y, PAL_ENEMY_MISSILE);
+      pset8_frame (x, y, color);
 
       if (e >= 0)
       {
