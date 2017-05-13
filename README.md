@@ -1,13 +1,13 @@
-#MOON DEFENDER
+# MOON DEFENDER
 GBA‚ÌƒQ[ƒ€‚Å‚·B  
 ƒGƒ~ƒ…ƒŒ[ƒ^‚©ŽÀ‹@‚Å—V‚×‚Ü‚·B  
 
 ‚±‚Ìƒ\[ƒX‚ÍÅV‚ÌDivkitPro‚Åƒrƒ‹ƒh‚Å‚«‚Ü‚·B
 
-##C³
+## C³
 2017-02-28@ŽÀ‹@‚Å‚àŒ©‚â‚·‚¢‚æ‚¤‚ÉƒLƒƒƒ‰ƒNƒ^‚ð‘å‚«‚­‚µ‚Ü‚µ‚½B  
 
-##—V‚Ñ•û
+## —V‚Ñ•û
 ‚æ‚­‚ ‚éƒ~ƒTƒCƒ‹ƒRƒ}ƒ“ƒh‚Å‚·B
 
 ã‹ó‚©‚ç~‚è’‚®ƒ~ƒTƒCƒ‹‚ðŒ‚”j‚µ‚Ä‚­‚¾‚³‚¢B  
@@ -17,11 +17,11 @@ AMBiAnti-Missile-BatteryjA‚à‚µ‚­‚Í“sŽs‚ª‚·‚×‚Ä”j‰ó‚³‚ê‚é‚ÆƒQ[ƒ€ƒI[ƒo[‚Å‚·
 ƒ~ƒTƒCƒ‹‚ðŒ‚”j‚µ‚½‚“x~Žc‚è“sŽs”‚ªƒXƒRƒA‚É‚È‚è‚Ü‚·Biã‹ó‚Ì‚Ù‚¤‚ªƒXƒRƒA‚Í‚‚¢‚Å‚·j  
 ‚È‚¨A“sŽs‚ð”j‰ó‚³‚ê‚½Œã‚ÌX’n‚ð”šŒ‚‚³‚ê‚é‚ÆƒXƒRƒA‚ªŒ¸ŽZ‚³‚ê‚Ü‚·B  
 
-###ƒgƒƒtƒB[
+### ƒgƒƒtƒB[
 ƒvƒŒƒC’†A‚ ‚éðŒ‚ðƒNƒŠƒA‚·‚é‚ÆƒgƒƒtƒB[‚ª‚à‚ç‚¦‚Ü‚·B  
 ƒgƒƒtƒB[‚Í6ŒÂ‚ ‚è‚Ü‚·B‚¢‚­‚ÂŠl“¾‚µ‚½‚©‚Íƒ^ƒCƒgƒ‹‰æ–Ê‚ÅŠm”F‚Å‚«‚Ü‚·B  
 
-###‘€ì
+### ‘€ì
 
 **ƒ^ƒCƒgƒ‹‰æ–Ê**
 
@@ -35,7 +35,7 @@ AMBiAnti-Missile-BatteryjA‚à‚µ‚­‚Í“sŽs‚ª‚·‚×‚Ä”j‰ó‚³‚ê‚é‚ÆƒQ[ƒ€ƒI[ƒo[‚Å‚·
 * **UP DOWN LEFT RIGHT**@Æ€ˆÚ“®
 * **SELECT**@ƒ|[ƒY
 
-###ƒLƒƒƒ‰ƒNƒ^
+### ƒLƒƒƒ‰ƒNƒ^
 
 **ƒAƒCƒeƒ€**
 
@@ -47,7 +47,7 @@ AMBiAnti-Missile-BatteryjA‚à‚µ‚­‚Í“sŽs‚ª‚·‚×‚Ä”j‰ó‚³‚ê‚é‚ÆƒQ[ƒ€ƒI[ƒo[‚Å‚·
 * **’Êí‚Ìƒ~ƒTƒCƒ‹**@“sŽs‚ð‘_‚Á‚Ä‚­‚éBƒŒƒxƒ‹‚ªã‚ª‚é‚²‚Æ‚É‘¬‚­‚È‚éB‚½‚Ü‚É’e“ª‚ª•ª—ôB
 * **UFO**@AMB–ÚŠ|‚¯‚Ä‚‘¬’e‚ðŒ‚‚Á‚Ä‚­‚éB
 
-##Žg—p‘fÞ
+## Žg—p‘fÞ
 ‚±‚¿‚ç‚©‚ç‚¨ŽØ‚è‚µ‚Ü‚µ‚½B  
 i˜R‚ê‚ª‚ ‚Á‚½‚ç‚·‚Ý‚Ü‚¹‚ñBŽw“E‚µ‚Ä‰º‚³‚¢j  
 

@@ -1348,7 +1348,6 @@ enum
 #define PAL_AMB_MISSILE (201)
 
 
-
 ///////////////////////////////////////////////////////////////////// timer
 
 #define DEF_TIMER_RELOAD (0)
